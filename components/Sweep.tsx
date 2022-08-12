@@ -221,7 +221,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
           isInTheWrongNetwork ||
           sweepTokens?.length === 0
         }
-        className="btn-primary-fill w-full dark:ring-primary-900 dark:focus:ring-4 md:w-[222px]"
+        className="btn-primary-fill w-full h-[30px] bg-[#5568fe] font-[Poppins] dark:ring-primary-900 dark:focus:ring-4 md:w-[222px] font-bold rounded-[4px]"
       >
         Sweep
       </Dialog.Trigger>

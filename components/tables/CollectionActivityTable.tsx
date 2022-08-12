@@ -47,7 +47,7 @@ const CollectionActivityTable: FC<Props> = ({ collection }) => {
               {headings.map((name, i) => (
                 <th
                   key={i}
-                  className="reservoir-subtitle pt-8 pb-7 font-medium text-neutral-600 dark:text-neutral-300"
+                  className="reservoir-subtitle pl-[61px] pt-[15px] pb-[15px] font-medium text-neutral-600 dark:text-neutral-300"
                 >
                   {name}
                 </th>
@@ -231,10 +231,13 @@ const CollectionActivityTableRow: FC<CollectionActivityTableRowProps> = ({
   return (
     <tr
       key={sale.id}
-      className="h-24 border-b border-gray-300 dark:border-[#525252]"
+      className="h-[51px] border-b border-gray-300 dark:border-[#525252]"
     >
-      <td>
-        <div className="mr-2.5 flex items-center">
+      <td className="pl-[61px] ">
+        <div
+          className="mr-2.5 flex items-center"
+          style={{ overflow: 'hidden' }}
+        >
           <img
             className="mr-2 h-6 w-6"
             src={saleSourceImgSrc}
@@ -245,7 +248,7 @@ const CollectionActivityTableRow: FC<CollectionActivityTableRowProps> = ({
           </span>
         </div>
       </td>
-      <td>
+      <td className="pl-[61px] ">
         <Link href={`/${sale.token?.contract}/${sale.token?.tokenId}`} passHref>
           <a className="mr-2.5 flex items-center">
             <Image
@@ -253,42 +256,45 @@ const CollectionActivityTableRow: FC<CollectionActivityTableRowProps> = ({
               loader={({ src }) => src}
               src={imageSrc}
               alt={`${sale.token?.name} Token Image`}
-              width={48}
-              height={48}
+              width={24}
+              height={24}
             />
-            <span className="reservoir-h6 ml-2 truncate dark:text-white">
-              {sale.token?.name}
+            <span className="reservoir-h6 ml-2 truncate dark:text-white font-[Poppins]">
+              #{sale.token?.tokenId}
             </span>
           </a>
         </Link>
       </td>
-      <td>
+      <td className="pl-[61px] ">
         <FormatEth amount={sale.price} />
       </td>
-      <td>
+      <td className="pl-[61px]">
         <Link href={`/address/${sale.from}`}>
-          <a className="ml-2.5 mr-2.5 font-light text-primary-700 dark:text-primary-300">
+          <a className="text-[#5568fe] dark:text-primary-300 font-[Poppins] font-bold">
             {fromShortAddress}
           </a>
         </Link>
       </td>
-      <td>
+      <td className="pl-[61px] ">
         <Link href={`/address/${sale.to}`}>
-          <a className="mr-2.5 font-light text-primary-700 dark:text-primary-300">
+          <a className="text-[#5568fe] dark:text-primary-300 font-[Poppins] font-bold">
             {toShortAddress}
           </a>
         </Link>
       </td>
-      <td>
+      <td className="pl-[61px] ">
         <Link href={`${etherscanBaseUrl}/tx/${sale.txHash}`}>
-          <a
+          <p className='text-[14px] font-bold'>
+            {timeAgo}
+          </p>
+          {/* <a
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 whitespace-nowrap font-light text-neutral-600 dark:text-neutral-300"
           >
             {timeAgo}
             <FiExternalLink className="h-4 w-4" />
-          </a>
+          </a> */}
         </Link>
       </td>
     </tr>

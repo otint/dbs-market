@@ -170,26 +170,24 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
   return (
     <>
       <HeroBackground banner={header.banner}>
-        <div className="z-10 flex w-full flex-col items-center gap-6">
+        <div className="z-10 pt-[94px] flex align-start w-full flex-col items-start gap-6">
           <img
-            className="h-20 w-20 rounded-full"
+            className="justify-start w-[94px] h-[94px] rounded-[7px] bg-[#ddd] outline-[5px] outline-white outline"
             alt={`${header.name} Logo`}
             src={header.image}
           />
-          <h1 className="reservoir-h4 text-center text-black dark:text-white">
+          <h1 className="reservoir-h4 text-center text-black dark:text-white font-[Poppins]">
             {header.name}
           </h1>
-          <HeroSocialLinks collection={collection?.data?.collection} />
-          <HeroStats stats={statsObj} />
           {header.description && (
             <>
               <div
-                className="relative overflow-hidden transition-[max-height] ease-in-out md:w-[423px]"
+                className="relative overflow-hidden transition-[max-height] ease-in-out md:w-[718px]"
                 style={{ maxHeight: descriptionHeight }}
               >
                 <p
                   ref={descriptionRef}
-                  className="text-center text-sm text-[#262626] transition-[width] duration-300 ease-in-out dark:text-white"
+                  className="text-start text-[10px] text-[#262626] transition-[width] duration-300 ease-in-out dark:text-white"
                 >
                   <ReactMarkdown linkTarget="_blank">
                     {header.description}
@@ -198,7 +196,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
               </div>
               {isLongDescription && (
                 <a
-                  className="mt-[-18px]"
+                  className="mt-[-18px] font-light text-[10px]"
                   onClick={(e) => {
                     e.preventDefault()
                     setDescriptionExpanded(!descriptionExpanded)
@@ -214,7 +212,10 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
               )}
             </>
           )}
-          <div className="flex w-full flex-col justify-center gap-4 md:flex-row">
+          <HeroSocialLinks collection={collection?.data?.collection} />
+          <HeroStats stats={statsObj} />
+
+          <div className="flex w-full flex-col justify-end gap-4 md:flex-row">
             {isSupported &&
               (isAttributeModal ? (
                 <AttributeOfferModal

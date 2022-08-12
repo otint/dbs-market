@@ -14,26 +14,27 @@ type Props = {
 
 const HeroStats: FC<{ stats: Props }> = ({ stats }) => {
   return (
-    <div className="grid min-w-full grid-cols-2 items-center gap-[1px] overflow-hidden rounded-lg border-[1px] border-gray-300 bg-gray-300 dark:border-[#525252] dark:bg-[#525252] md:m-0 md:h-[82px] md:min-w-[647px] md:grid-cols-4 md:gap-2 md:bg-white dark:md:bg-black">
+    <div className="grid min-w-full grid-cols-2 items-center gap-[91px] overflow-hidden bg-gray-300 dark:border-[#525252] dark:bg-[#525252] md:m-0 md:h-[40px] md:min-w-[553px] md:grid-cols-4 md:bg-white dark:md:bg-black">
       <Stat name="items">
-        <h3 className="reservoir-h6 dark:text-white">
+        <h3 className="reservoir-h6 flex justify-center dark:text-white font-[Poppins] font-bold h-[20px] text-[#232149]">
           {formatNumber(stats.count)}
         </h3>
       </Stat>
       <Stat name="top offer">
-        <h3 className="reservoir-h6 dark:text-white">
-          <FormatWEth amount={stats.topOffer} />
+        <h3 className="reservoir-h6 flex justify-center dark:text-white font-[Poppins] font-bold h-[20px] text-[#232149]">
+          <FormatEth amount={stats.topOffer} />
         </h3>
       </Stat>
       <Stat name="floor">
-        <h3 className="reservoir-h6 flex items-center justify-center gap-1 dark:text-white">
+        <h3 className="reservoir-h6 flex justify-center gap-1 dark:text-white font-[Poppins] font-bold h-[20px] text-[#232149]">
           <FormatEth amount={stats.floor} maximumFractionDigits={2} />
           <PercentageChange value={stats.floorChange} />
         </h3>
       </Stat>
       <Stat name="total volume">
-        <h3 className="reservoir-h6 flex items-center justify-center gap-1 dark:text-white">
+        <h3 className="reservoir-h6 flex justify-center gap-1 dark:text-white font-[Poppins] font-bold h-[20px] text-[#232149]">
           <FormatEth amount={stats.allTime} maximumFractionDigits={2} />
+          <PercentageChange value={stats.volumeChange} />
         </h3>
       </Stat>
     </div>
@@ -41,9 +42,9 @@ const HeroStats: FC<{ stats: Props }> = ({ stats }) => {
 }
 
 const Stat: FC<{ name: string }> = ({ name, children }) => (
-  <div className="flex h-20 flex-col items-center justify-center bg-white dark:bg-black md:h-auto">
+  <div className="flex flex-col justify-center bg-white dark:bg-black">
     {children}
-    <p className="mt-1 text-[#A3A3A3]">{name}</p>
+    <p className="h-[20px] flex justify-center text-[#232149]" style={{fontSize: '12px'}}>{name}</p>
   </div>
 )
 
@@ -60,13 +61,13 @@ export const PercentageChange: FC<{ value: number | undefined | null }> = ({
 
   if (value < 1) {
     return (
-      <div className="text-sm text-[#FF3B3B]">{formatNumber(percentage)}%</div>
+      <div className="text-[12px] font-[Poppins] text-[#FF3B3B]">{formatNumber(percentage)}%</div>
     )
   }
 
   if (value > 1) {
     return (
-      <div className="text-sm text-[#06C270]">+{formatNumber(percentage)}%</div>
+      <div className="text-[12px] font-[Poppins] text-[#06C270]">+{formatNumber(percentage)}%</div>
     )
   }
 

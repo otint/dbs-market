@@ -47,7 +47,7 @@ const Sidebar: FC<Props> = ({ attributes, setTokensSize }) => {
           className="overflow-hidden"
         >
           <Accordion.Header
-            className={`flex w-full justify-between border-b-[1px] border-gray-300 dark:border-neutral-600 ${
+            className={`flex w-full justify-between border-b-[1px] border-[#eeedf3] border-gray-300 dark:border-neutral-600 ${
               router.query.attribute_key &&
               router.query.attribute_key.toString() === attribute.key
                 ? 'divide-gray-800 dark:divide-gray-300'
@@ -83,7 +83,6 @@ const Sidebar: FC<Props> = ({ attributes, setTokensSize }) => {
                   : 'hover:bg-primary-100 dark:hover:bg-primary-900'
               }`}
             >
-              <div className="h-6 w-px bg-gray-300 dark:bg-neutral-600"></div>
               <Accordion.Trigger className="p-5 transition">
                 <FiChevronDown className="h-5 w-5" aria-hidden />
               </Accordion.Trigger>

@@ -14,7 +14,8 @@ type Props = {
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/reservoir.svg'
-  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/reservoir-desktop.svg'
+  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/icons/logo.svg' || '/reservoir-desktop.svg'
+  const desktopLogoType = '/icons/logotype.svg'
   const logoAlt = SOURCE_ID ? `${SOURCE_ID} Logo` : 'Reservoir Logo'
   const mobileVariant = variant == 'mobile'
   const desktopVariant = variant == 'desktop'
@@ -23,7 +24,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   return (
     <Link href={NAVBAR_LOGO_LINK || '/'}>
       <a
-        className={`relative inline-flex flex-none items-center gap-1 ${className}`}
+        className={`relative inline-flex flex-none justify-space-between items-center gap-1 ${className}`}
       >
         <img
           src={logo}
@@ -35,10 +36,17 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
         <img
           src={desktopLogo}
           alt={logoAlt}
-          className={`h-9 w-auto md:block ${
+          className={`h-[20px] w-auto md:block ${
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
         />
+        {desktopLogoType ? <img
+          src={desktopLogoType}
+          alt={logoAlt}
+          className={`h-[8px] w-auto md:block ${
+            !variant ? 'hidden md:block' : ''
+          } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
+        /> : null}
         {isTestNet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]

@@ -53,7 +53,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                   <img
                     src="/icons/Discord.svg"
                     alt="Discord Icon"
-                    className="h-6 w-6"
+                    className="h-[16px] w-[16px]"
                   />
                   Discord
                 </a>
@@ -70,7 +70,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                   <img
                     src="/icons/Twitter.svg"
                     alt="Twitter Icon"
-                    className="h-6 w-6"
+                    className="h-[16px] w-[16px]"
                   />
                   Twitter
                 </a>
@@ -86,7 +86,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                 <img
                   src={etherscanLogo}
                   alt="Etherscan Icon"
-                  className="h-6 w-6"
+                  className="h-[16px] w-[16px]"
                 />
                 Etherscan
               </a>
@@ -99,7 +99,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                   rel="noopener noreferrer"
                   href={social.externalUrl}
                 >
-                  <FiGlobe className="h-6 w-6" />
+                  <FiGlobe className="h-[16px] w-[16px]" />
                   Website
                 </a>
               </DropdownMenu.Item>
@@ -121,7 +121,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
             <img
               src="/icons/Discord.svg"
               alt="Discord Icon"
-              className="h-6 w-6"
+              className="h-[16px] w-[16px]"
             />
           </a>
         )}
@@ -135,7 +135,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
             <img
               src="/icons/Twitter.svg"
               alt="Twitter Icon"
-              className="h-6 w-6"
+              className="h-[16px] w-[16px]"
             />
           </a>
         )}
@@ -145,7 +145,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
           rel="noopener noreferrer"
           href={social.etherscanUrl}
         >
-          <img src={etherscanLogo} alt="Etherscan Icon" className="h-6 w-6" />
+          <img src={etherscanLogo} alt="Etherscan Icon" className="h-[16px] w-[16px]" />
         </a>
         {typeof social.externalUrl === 'string' && (
           <a
@@ -154,7 +154,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
             rel="noopener noreferrer"
             href={social.externalUrl}
           >
-            <FiGlobe className="h-6 w-6" />
+            <FiGlobe className="h-[16px] w-[16px]" />
           </a>
         )}
       </div>
