@@ -32,7 +32,7 @@ const SortMenu: FC<Props> = ({ setSize }) => {
 
   return (
     <DropdownMenu.Root onOpenChange={setOpen}>
-      <DropdownMenu.Trigger className="btn-primary-outline w-[228px] justify-between px-4 py-3 dark:border-neutral-600 dark:ring-primary-900 dark:focus:ring-4">
+      <DropdownMenu.Trigger className="btn-primary-outline w-[228px] h-[30px] rounded-[4px] justify-between px-4 py-3 dark:border-neutral-600 dark:ring-primary-900 dark:focus:ring-4">
         <span className="reservoir-label-l dark:text-gray-100">
           {sortSelection}
         </span>
@@ -46,7 +46,7 @@ const SortMenu: FC<Props> = ({ setSize }) => {
       <DropdownMenu.Content
         align="end"
         sideOffset={12}
-        className="w-48 divide-y-[1px] divide-[#D1D5DB] overflow-hidden rounded-[8px] border-[1px] border-[#D1D5DB] bg-white shadow-md radix-side-bottom:animate-slide-down dark:divide-neutral-600 dark:border-neutral-600 dark:bg-neutral-800 md:w-56"
+        className="w-48 divide-y-[1px] divide-[#D1D5DB] overflow-hidden rounded-[4px] border-[1px] border-[#D1D5DB] bg-white shadow-md radix-side-bottom:animate-slide-down dark:divide-neutral-600 dark:border-neutral-600 dark:bg-neutral-800 md:w-56"
       >
         {Object.keys(options).map((key) => (
           <DropdownMenu.Item
@@ -60,7 +60,7 @@ const SortMenu: FC<Props> = ({ setSize }) => {
               }
             }}
             disabled={sortSelection === options[key]}
-            className={`reservoir-label-l reservoir-gray-dropdown-item rounded-none hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800`}
+            className={`reservoir-label-l reservoir-gray-dropdown-item rounded-none h-[30px] hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800`}
             aria-label={`Sort by ${options[key]}`}
           >
             {options[key]}

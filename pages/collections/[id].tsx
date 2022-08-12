@@ -206,10 +206,10 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
                   <div className="flex items-center gap-6">
                     {tokenCount > 0 && (
                       <>
-                        <div>{formatNumber(tokenCount)} items</div>
+                        <div className='font-[Poppins]'>{formatNumber(tokenCount)} items</div>
 
-                        <div className="h-9 w-px bg-gray-300 dark:bg-neutral-600"></div>
-                        <div>
+                        {/* <div className="h-9 w-px bg-gray-300 dark:bg-neutral-600"></div> */}
+                        <div className='font-[Poppins]'>
                           <FormatEth
                             amount={stats?.data?.stats?.market?.floorAsk?.price}
                           />{' '}
@@ -231,20 +231,20 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
                       <SortMenu setSize={tokens.setSize} />
                     )}
                     <button
-                      className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                      className="btn-primary-outline rounded-[4px] w-[30px] h-[30px] p-0 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                       title="Refresh collection"
                       disabled={refreshLoading}
                       onClick={() => refreshCollection(id)}
                     >
                       <FiRefreshCcw
-                        className={`h-5 w-5 ${
+                        className={`${
                           refreshLoading ? 'animate-spin-reverse' : ''
                         }`}
                       />
                     </button>
                   </div>
                 </div>
-                <div className="mb-10 flex items-center justify-between">
+                <div className="flex items-center justify-between">
                   <div>
                     <AttributesFlex className="flex flex-wrap gap-3" />
                     <ExploreFlex />
