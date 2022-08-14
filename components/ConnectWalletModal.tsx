@@ -29,10 +29,11 @@ const ConnectWalletModal: FC = () => {
         onClose={() => setConnectWalletDialog(false)}
       >
         <div className="flex h-full w-[500px] flex-col items-center">
-          <h3 className="reservoir-h4 font-headings font-[Poppins] font-bold dark:text-white">
+        <img src="/connect-wallet.svg" alt="Connect Wallet" className="w-[84px] h-[96px] mt-[124px] mb-[16px]" />
+          <h3 className="font-[Poppins] text-[24px] font-[900] dark:text-white">
             Connect Wallet
           </h3>
-          <p className="font-[Poppins] mb-[50px] dark:text-white">
+          <p className="font-[Poppins] mb-[50px] text-[#56538e] dark:text-white">
             Choose your preferred wallet provider
           </p>
           <Wallets />
