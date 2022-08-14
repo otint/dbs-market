@@ -19,10 +19,10 @@ const Owner: FC<Props> = ({ details, bannedOnOpenSea }) => {
       : token?.token?.owner
 
   return (
-    <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
-      <article className="col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
-        <div className="reservoir-h3 mb-6 flex items-center gap-4 overflow-hidden font-headings dark:text-white">
-          <div>{token?.token?.name || `#${token?.token?.tokenId}`}</div>
+    <div className="col-span-full">
+      <article className="bg-white dark:border-neutral-600 dark:bg-black">
+        <div className="reservoir-h3 mb-1 flex items-center gap-4 overflow-hidden font-headings dark:text-white">
+          <div className="font-[Poppins]">{`#${token?.token?.tokenId}`}</div>
           {bannedOnOpenSea && (
             <Tooltip.Provider>
               <Tooltip.Root delayDuration={0}>
@@ -54,16 +54,16 @@ const Owner: FC<Props> = ({ details, bannedOnOpenSea }) => {
           </div>
         )} */}
 
-        <div className="reservoir-h6 mb-2 font-headings dark:text-white">
-          Owner
+        <div className="mb-2 font-[Poppins] text-[14px] dark:text-white">
+          owner
+          {owner && (
+            <Link href={`/address/${owner}`}>
+              <a className="ml-2 inline-block font-[Poppins] text-[14px] font-bold text-[#5568FE]">
+                <EthAccount address={owner} side="left" />
+              </a>
+            </Link>
+          )}
         </div>
-        {owner && (
-          <Link href={`/address/${owner}`}>
-            <a className="inline-block">
-              <EthAccount address={owner} side="left" />
-            </a>
-          </Link>
-        )}
       </article>
     </div>
   )

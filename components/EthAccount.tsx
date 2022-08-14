@@ -25,18 +25,18 @@ const EthAccount: FC<Props> = ({
   return (
     <div className="flex items-center gap-2">
       {title && (
-        <p className="reservoir-label-l capitalize text-gray-400 dark:text-white">
+        <p className="text-[#5568FE] capitalize text-gray-400 dark:text-white">
           {title}
         </p>
       )}
-      {side === 'left' && icon}
+      {/* {side === 'left' && icon} */}
       {ens?.name ? (
         <div title={address} className="dark:text-white">
           {truncateEns(ens.name)}
         </div>
       ) : (
         <div
-          className="reservoir-label-l block whitespace-nowrap font-mono dark:text-white"
+          className="text-[#5568FE] block whitespace-nowrap font-mono dark:text-white"
           title={address}
         >
           {truncateAddress(address || '')}

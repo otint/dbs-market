@@ -17,10 +17,10 @@ const CollectionInfo: FC<Props> = ({ collection, details }) => {
     collection.data?.collection?.metadata?.description
 
   return (
-    <article className="col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
-      <div className="reservoir-h5 mb-4 dark:text-white">Collection Info</div>
+    <article className="rounded-[4px] border border-gray-200 bg-white col-start-1 col-span-4 dark:border-neutral-600 dark:bg-black">
+      <div className="reservoir-h5 font-[Poppins] p-3 pb-2 border-b-[1px] border-gray-200 text-[14px] font-normal font-[Poppins] dark:text-white">Collection Info</div>
       <Link href={`/collections/${collection.data?.collection?.id}`}>
-        <a className="inline-flex items-center gap-2">
+        <a className="inline-flex items-center gap-2 p-4">
           <img
             src={optimizeImage(
               collection.data?.collection?.metadata?.imageUrl as string,
@@ -29,13 +29,13 @@ const CollectionInfo: FC<Props> = ({ collection, details }) => {
             alt="collection avatar"
             className="h-9 w-9 rounded-full"
           />
-          <span className="reservoir-h6 font-headings dark:text-white">
+          <span className="reservoir-h6 font-[Poppins] font-headings dark:text-white">
             {token?.token?.collection?.name}
           </span>
         </a>
       </Link>
       {tokenDescription && (
-        <div className="reservoir-body-2 mt-4 break-words dark:text-white">
+        <div className="reservoir-body-2 p-4 break-words dark:text-white">
           {/* @ts-ignore */}
           {tokenDescription}
         </div>

@@ -166,11 +166,11 @@ const BuyNow: FC<Props> = ({
           }}
         >
           {waitingTx ? (
-            <p className="btn-primary-fill w-full">
+            <p className="btn-primary-fill w-[220px] p-1 rounded-[4px] font-bold bg-[#5568FE]">
               <CgSpinner className="h-4 w-4 animate-spin" />
             </p>
           ) : (
-            <p className="btn-primary-fill w-full">Buy Now</p>
+            <p className="text-white w-[220px] p-1 rounded-[4px] font-bold bg-[#5568FE]">Buy Now</p>
           )}
         </Dialog.Trigger>
       )}

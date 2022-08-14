@@ -157,7 +157,6 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
     : token?.token?.image
     ? metadata.image(token?.token?.image)
     : null
-
   return (
     <Layout navbar={{}}>
       <Head>
@@ -165,16 +164,18 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
         {description}
         {image}
       </Head>
-      <div className="col-span-full content-start space-y-4 px-2 md:col-span-4 lg:col-span-5 lg:col-start-2 lg:px-0 2xl:col-span-4 2xl:col-start-3 3xl:col-start-5 4xl:col-start-7">
-        <div className="mb-4">
-          <TokenMedia details={details} tokenOpenSea={tokenOpenSea} />
+      {image ? (
+        <div className="col-end-5 col-start-2 mt-8 space-y-4">
+          <div className="mb-4">
+            <TokenMedia details={details} tokenOpenSea={tokenOpenSea} />
+          </div>
         </div>
-        <div className="hidden space-y-4 md:block">
-          <CollectionInfo collection={collection} details={details} />
-          <TokenInfo details={details} />
-        </div>
-      </div>
-      <div className="col-span-full mb-4 space-y-4 px-2 md:col-span-4 md:col-start-5 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
+      ) : null}
+      <div
+        className={`mb-4 mt-8 space-y-4 px-2 ${
+          image ? 'col-end-12 col-start-5' : 'col-end-12 col-start-2'
+        }`}
+      >
         <Owner details={details} bannedOnOpenSea={bannedOnOpenSea} />
         <PriceData details={details} collection={collection} />
         <TokenAttributes
@@ -182,11 +183,15 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
           collection={collection.data?.collection}
         />
         <Listings asks={asks} />
+        <div className="grid grid-cols-8 gap-2 space-x-4">
+          <CollectionInfo collection={collection} details={details} />
+          <TokenInfo details={details} />
+        </div>
       </div>
-      <div className="col-span-full block space-y-4 px-2 md:hidden lg:px-0">
+      {/* <div className="col-span-full block space-y-4 px-2 md:hidden lg:px-0">
         <CollectionInfo collection={collection} details={details} />
         <TokenInfo details={details} />
-      </div>
+      </div> */}
     </Layout>
   )
 }

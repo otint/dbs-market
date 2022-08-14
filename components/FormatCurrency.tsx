@@ -18,7 +18,7 @@ const FormatCurrency: FC<Props> = ({
   return (
     <div className="inline-flex flex-none items-center gap-1">
       {value !== '-' ? children : null}
-      <span className="flex-grow font-semibold">{value}</span>
+      <span className="flex-grow font-[900]">{value}</span>
     </div>
   )
 }

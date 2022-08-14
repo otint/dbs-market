@@ -55,40 +55,42 @@ const PriceData: FC<Props> = ({ details, collection }) => {
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
-      <article className="col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
-        <div className="grid grid-cols-2 gap-6">
-          <Price
-            title="List Price"
-            source={
-              sourceName && (
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={sourceRedirect}
-                  className="reservoir-body flex items-center gap-2 dark:text-white"
-                >
-                  on {sourceName}
-                  <img className="h-6 w-6" src={sourceLogo} alt="Source Logo" />
-                </a>
-              )
-            }
-            price={
-              <FormatEth
-                amount={token?.market?.floorAsk?.price}
-                logoWidth={16}
-              />
-            }
-          />
-          <Price
-            title="Top Offer"
-            price={
-              <FormatWEth
-                amount={token?.market?.topBid?.value}
-                logoWidth={16}
-              />
-            }
-          />
-          <div className="col-span-2 grid gap-4 md:grid-cols-2 md:gap-6">
+      <article className="rounded-[4px] border border-gray-200 bg-white dark:border-neutral-600 dark:bg-black">
+        <div className="flex flex-col gap-6 m-5">
+          <div className='grid grid-cols-6 gap-6'>
+            <Price
+              title="List Price"
+              source={
+                sourceName && (
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={sourceRedirect}
+                    className="reservoir-body flex items-center gap-2 dark:text-white"
+                  >
+                    on {sourceName}
+                    <img className="h-6 w-6" src={sourceLogo} alt="Source Logo" />
+                  </a>
+                )
+              }
+              price={
+                <FormatEth
+                  amount={token?.market?.floorAsk?.price}
+                  logoWidth={8}
+                />
+              }
+            />
+            <Price
+              title="Top Offer"
+              price={
+                <FormatEth
+                  amount={token?.market?.topBid?.value}
+                  logoWidth={8}
+                />
+              }
+            />
+          </div>
+          <div className="flex">
             {isOwner && (
               <ListModal
                 data={{
@@ -140,10 +142,11 @@ const PriceData: FC<Props> = ({ details, collection }) => {
             )}
           </div>
         </div>
+        
         <div
           className={`${
             (isOwner && isListed) || isTopBidder ? 'mt-6' : ''
-          } flex justify-center`}
+          } flex justify-center border-t-[1px] border-gray border-top py-2 font-[Poppins]`}
         >
           <CancelOffer
             data={{
@@ -178,11 +181,11 @@ const Price: FC<{ title: string; price: ReactNode; source?: ReactNode }> = ({
   price,
   source,
 }) => (
-  <div className="flex flex-col space-y-5">
+  <div className="space-y-[5px]">
     <div className="flex-grow">
-      <div className="reservoir-h5 font-headings dark:text-white">{title}</div>
-      {source}
+      <div className="font-headings font-light text-[12px] dark:text-white">{title}</div>
+      {/* {source} */}
     </div>
-    <div className="reservoir-h3 font-headings dark:text-white">{price}</div>
+    <div className="reservoir-h3 font-headings m-0 text-[14px] dark:text-white">{price}</div>
   </div>
 )

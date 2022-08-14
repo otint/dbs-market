@@ -146,7 +146,7 @@ const CancelOffer: FC<Props> = ({
             }
             execute(id, signer)
           }}
-          className="btn-primary-outline dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+          className="border-1px dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
         >
           {waitingTx ? (
             <CgSpinner className="h-4 w-4 animate-spin" />

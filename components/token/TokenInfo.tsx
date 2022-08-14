@@ -66,12 +66,12 @@ const TokenInfo: FC<Props> = ({ details }) => {
   }
 
   return (
-    <article className="col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
-      <div className="mb-4 flex items-center justify-between">
-        <div className="reservoir-h5 font-headings dark:text-white">
+    <article className="bg-white col-start-5 col-span-4 dark:border-neutral-600 dark:bg-black">
+      <div className="flex items-center justify-between border border-gray-200 rounded-t-[4px] p-3 pb-2">
+        <div className="reservoir-h5 font-[Poppins] font-normal text-[14px] dark:text-white">
           Token Info
         </div>
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <a
             className="reservoir-h6 font-headings"
             target="_blank"
@@ -96,57 +96,53 @@ const TokenInfo: FC<Props> = ({ details }) => {
               className="h-6 w-6"
             />
           </a>
-        </div>
+        </div> */}
       </div>
-      {token?.token?.contract && (
-        <div className="mb-4 flex items-center justify-between">
-          <div className="reservoir-subtitle dark:text-white">
-            Contract Address
+      <div className=''>
+        {token?.token?.contract && (
+          <div className="p-3 flex items-center justify-between">
+            <div className="reservoir-subtitle text-[14px] font-[Poppins] font-light dark:text-white">
+              Contract Address
+            </div>
+            <div>
+              <a
+                className="reservoir-h6 flex items-center gap-2 text-[#5568FE] font-[Poppins] dark:text-primary-100"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://etherscan.io/address/${token?.token?.contract}`}
+              >
+                {truncateAddress(token?.token?.contract)}
+              </a>
+            </div>
           </div>
-          <div>
-            <a
-              className="reservoir-h6 flex items-center gap-2 font-headings text-primary-700 dark:text-primary-100"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://etherscan.io/address/${token?.token?.contract}`}
-            >
-              {truncateAddress(token?.token?.contract)}
-              <FiExternalLink className="h-4 w-4" />
-            </a>
+        )}
+        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between">
+          <div className="reservoir-subtitle text-[14px] font-light font-[Poppins] dark:text-white">Token ID</div>
+          <div className="reservoir-h6 max-w-[80px] truncate text-[#5568FE] font-[Poppins]  dark:text-white">
+            {token?.token?.tokenId}
           </div>
         </div>
-      )}
-      <div className="mb-4 flex items-center justify-between">
-        <div className="reservoir-subtitle dark:text-white">Token ID</div>
-        <div className="reservoir-h6 max-w-[80px] truncate font-headings dark:text-white">
-          {token?.token?.tokenId}
+        <div className="p-3 flex items-center justify-between">
+          <div className="reservoir-subtitle text-[14px] font-light font-[Poppins] dark:text-white">Token Standard</div>
+          <div className="reservoir-h6 uppercase text-[#5568FE] font-[Poppins]  dark:text-white">
+            {token?.token?.kind}
+          </div>
         </div>
-      </div>
-      <div className="mb-4 flex items-center justify-between">
-        <div className="reservoir-subtitle dark:text-white">Token Standard</div>
-        <div className="reservoir-h6 font-headings uppercase dark:text-white">
-          {token?.token?.kind}
+        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between">
+          <div className="reservoir-subtitle text-[14px] font-light font-[Poppins] dark:text-white">
+            Metadata Refresh
+          </div>
+          <button
+            className="reservoir-h6 ml-auto flex items-center text-[#5568FE] font-[Poppins]  dark:border-neutral-600 dark:text-primary-100 dark:ring-primary-900 dark:focus:ring-4"
+            title="Refresh token"
+            disabled={refreshLoading}
+            onClick={() =>
+              refreshToken(`${token?.token?.contract}:${token?.token?.tokenId}`)
+            }
+          >
+            Refresh{' '}
+          </button>
         </div>
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="reservoir-subtitle dark:text-white">
-          Metadata Refresh
-        </div>
-        <button
-          className="btn-primary-outline reservoir-h6 ml-auto flex items-center gap-2 p-2 font-headings text-primary-700 dark:border-neutral-600 dark:text-primary-100 dark:ring-primary-900 dark:focus:ring-4"
-          title="Refresh token"
-          disabled={refreshLoading}
-          onClick={() =>
-            refreshToken(`${token?.token?.contract}:${token?.token?.tokenId}`)
-          }
-        >
-          Refresh{' '}
-          <FiRefreshCcw
-            className={`h-4 w-4 ${
-              refreshLoading ? 'animate-spin-reverse' : ''
-            }`}
-          />
-        </button>
       </div>
     </article>
   )
