@@ -6,7 +6,7 @@ const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
 const DESKTOP_NAVBAR_LOGO = process.env.NEXT_PUBLIC_DESKTOP_NAVBAR_LOGO
 const NAVBAR_LOGO_LINK = process.env.NEXT_PUBLIC_NAVBAR_LOGO_LINK
-const DARK_MODE_ENABLED = process.env.NEXT_PUBLIC_DARK_MODE || true
+const DARK_MODE_ENABLED = process.env.NEXT_PUBLIC_DARK_MODE
 
 type Props = {
   variant?: 'desktop' | 'mobile' | undefined
@@ -17,6 +17,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/reservoir.svg'
   // const desktopLogo = DESKTOP_NAVBAR_LOGO || '/icons/logo.svg' || '/reservoir-desktop.svg'
   // const desktopLogoType = '/icons/logotype.svg'
+  console.log(DARK_MODE_ENABLED)
   const desktopLogo = DARK_MODE_ENABLED
     ? '/icons/logo-dark.svg'
     : '/icons/logo.svg'
