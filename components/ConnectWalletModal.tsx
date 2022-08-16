@@ -28,7 +28,7 @@ const ConnectWalletModal: FC = () => {
         open={connectWalletDialog}
         onClose={() => setConnectWalletDialog(false)}
       >
-        <div className="flex h-full w-[500px] flex-col items-center">
+        <div className="flex h-full w-[500px] flex-col items-center dark:bg-[#232149]">
         <img src="/connect-wallet.svg" alt="Connect Wallet" className="w-[84px] h-[96px] mt-[124px] mb-[16px]" />
           <h3 className="font-[Poppins] text-[24px] font-[900] dark:text-white">
             Connect Wallet
@@ -108,7 +108,7 @@ export const Wallets: FC = () => {
     <div className="grid w-full">
       {connectors.map((connector) => (
         <button
-          className="rounded-2xl border-b-[1px] border-gray-200 py-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 md:rounded-none"
+          className="rounded-2xl border-b-[1px] border-gray-200 py-4 hover:bg-neutral-100 dark:hover:bg-[#2c295c] md:rounded-none"
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector: connector })}

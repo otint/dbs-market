@@ -43,7 +43,7 @@ const AttributeSelector: FC<Props> = ({
           }`}
         />
         <DebounceInput
-          className="reservoir-label-l input-primary-outline w-full pl-9 dark:border-neutral-600 dark:bg-neutral-900 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+          className="reservoir-label-l input-primary-outline w-full pl-9 dark:border-neutral-600 dark:bg-[#232149] dark:text-white dark:ring-[#2c295c] dark:focus:ring-4"
           type="text"
           autoFocus
           value={query}

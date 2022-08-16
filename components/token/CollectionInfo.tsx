@@ -17,8 +17,8 @@ const CollectionInfo: FC<Props> = ({ collection, details }) => {
     collection.data?.collection?.metadata?.description
 
   return (
-    <article className="rounded-[4px] border border-gray-200 bg-white col-start-1 col-span-4 dark:border-neutral-600 dark:bg-black">
-      <div className="reservoir-h5 font-[Poppins] p-3 pb-2 border-b-[1px] border-gray-200 text-[14px] font-normal font-[Poppins] dark:text-white">Collection Info</div>
+    <article className="rounded-[4px] border border-gray-200 bg-white col-start-1 col-span-4 dark:border-[#56538e] dark:bg-[#302e62]">
+      <div className="reservoir-h5 font-[Poppins] p-3 pb-2 border-b-[1px] border-gray-200 text-[14px] font-normal font-[Poppins] dark:border-[#56538e] dark:text-white dark:bg-[#302e62]">Collection Info</div>
       <Link href={`/collections/${collection.data?.collection?.id}`}>
         <a className="inline-flex items-center gap-2 p-4">
           <img

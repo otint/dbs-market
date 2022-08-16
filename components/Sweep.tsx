@@ -235,29 +235,25 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
               <div className="fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 transform">
                 <div className="px-5">
                   <div
-                    className={`mx-auto  border border-neutral-300 bg-white p-11 shadow-xl dark:border-neutral-600 dark:bg-black md:w-[639px] ${
-                      DISABLE_POWERED_BY_RESERVOIR
-                        ? 'rounded-2xl'
-                        : 'rounded-t-2xl'
-                    }`}
+                    className="mx-auto  border border-neutral-300 bg-white p-11 shadow-xl dark:border-[#56538e] dark:bg-[#232149] md:w-[639px] rounded-[4px]"
                   >
                     <div className="mb-4 flex items-center justify-between">
                       <Dialog.Title className="reservoir-h4 font-headings dark:text-white">
                         <div className="flex items-center gap-4">
-                          <img
+                          {/* <img
                             src={
                               collection?.data?.collection?.metadata
                                 ?.imageUrl as string
                             }
                             alt=""
                             className="block h-12 w-12 rounded-full"
-                          />
+                          /> */}
                           <div className="reservoir-h5 dark:text-white">
                             {collection?.data?.collection?.name}
                           </div>
                         </div>
                       </Dialog.Title>
-                      <Dialog.Close className="btn-primary-outline p-1.5 dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+                      <Dialog.Close className="btn-primary-outline p-1.5 dark:border-[#56538e] dark:text-white dark:ring-[#56538e] dark:ring-1 dark:hover:ring-4 dark:focus:ring-4">
                         <HiX className="h-5 w-5" />
                       </Dialog.Close>
                     </div>
@@ -274,8 +270,8 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                         max={maxInput}
                         className="hidden w-full flex-grow md:flex"
                       >
-                        <StyledTrack className="bg-neutral-200 dark:bg-neutral-700">
-                          <StyledRange className="bg-primary-700" />
+                        <StyledTrack className="bg-[#56538e] dark:bg-[#56538e]">
+                          <StyledRange className="bg-[#5568fe]" />
                         </StyledTrack>
                         <StyledThumb />
                       </StyledSlider>
@@ -288,7 +284,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                         type="number"
                         name="amount"
                         id="amount"
-                        className="input-primary-outline w-full px-2 dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900  dark:focus:ring-4 md:w-20"
+                        className="input-primary-outline w-full px-2 dark:border-[#56538e] dark:bg-[#302e62] dark:ring-[#56538e]  dark:focus:ring-2 md:w-20"
                       />
                     </div>
                     <div className="mb-8 grid h-[215px] grid-cols-5 justify-center gap-2 overflow-y-auto pr-2 md:grid-cols-7">
@@ -341,12 +337,12 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
 
                         await execute(signer)
                       }}
-                      className="btn-primary-fill w-full dark:ring-primary-900 dark:focus:ring-4 md:mx-auto md:w-[248px]"
+                      className="btn-primary-fill bg-[#5568fe] rounded-[4px] w-full dark:ring-[#56538e] dark:focus:ring-4 dark:bg-[#5568fe] dark:hover:bg-[#28327a] md:mx-auto md:w-[248px]"
                     >
                       Buy Now
                     </button>
                   </div>
-                  {!DISABLE_POWERED_BY_RESERVOIR && (
+                  {/* {!DISABLE_POWERED_BY_RESERVOIR && (
                     <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[639px]">
                       <Link href="https://reservoirprotocol.github.io/">
                         <a
@@ -364,7 +360,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                         </a>
                       </Link>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </Dialog.Content>

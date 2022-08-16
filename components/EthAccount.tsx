@@ -11,6 +11,7 @@ type Props = {
   title?: string
   side?: 'left' | 'right'
   hideIcon?: boolean
+  classes?: string
 }
 
 const EthAccount: FC<Props> = ({
@@ -19,24 +20,38 @@ const EthAccount: FC<Props> = ({
   title,
   side = 'right',
   hideIcon,
+  classes,
 }) => {
   const icon = !hideIcon && <Avatar address={address} avatar={ens?.avatar} />
 
   return (
     <div className="flex items-center gap-2">
       {title && (
-        <p className="text-[#5568FE] capitalize text-gray-400 dark:text-white">
+        <p
+          className={`${
+            !classes
+              ? 'capitalize text-[#5568FE] text-gray-400 dark:text-white'
+              : classes
+          }`}
+        >
           {title}
         </p>
       )}
       {/* {side === 'left' && icon} */}
       {ens?.name ? (
-        <div title={address} className="dark:text-white">
+        <div
+          title={address}
+          className={`${!classes ? 'dark:text-white' : classes}`}
+        >
           {truncateEns(ens.name)}
         </div>
       ) : (
         <div
-          className="text-[#5568FE] block whitespace-nowrap font-mono dark:text-white"
+          className={`${
+            !classes
+              ? 'block whitespace-nowrap font-mono text-[#5568FE] dark:text-white'
+              : classes
+          }`}
           title={address}
         >
           {truncateAddress(address || '')}

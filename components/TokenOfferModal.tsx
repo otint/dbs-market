@@ -225,7 +225,7 @@ const TokenOfferModal: FC<Props> = ({ env, royalties, data, setToast }) => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger disabled={isInTheWrongNetwork}>
-        <p className="btn-primary-outline border-none font-bold w-[220px] p-1 rounded-[4px] bg-[#FAFAFC] text-[#5568FE] ml-[15px] dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4">
+        <p className="btn-primary-outline border-none font-bold w-[220px] p-1 rounded-[4px] bg-[#FAFAFC] text-[#5568FE] ml-[15px] dark:text-white dark:ring-primary-900 dark:focus:ring-4 dark:bg-[#56538e]">
           Make Offer
         </p>
       </Dialog.Trigger>
@@ -276,7 +276,7 @@ const TokenOfferModal: FC<Props> = ({ env, royalties, data, setToast }) => {
                   step={0.01}
                   value={offerPrice}
                   onChange={(e) => setOfferPrice(e.target.value)}
-                  className="input-primary-outline w-[160px] dark:border-neutral-600 dark:bg-neutral-900  dark:ring-primary-900 dark:focus:ring-4"
+                  className="input-primary-outline w-[160px] dark:border-[#56538e] dark:bg-[#302e62]  dark:ring-[#56538e] dark:focus:ring-4"
                 />
               </div>
               <div className="flex items-center justify-between">

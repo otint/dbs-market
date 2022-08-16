@@ -49,9 +49,7 @@ const ModalCard: FC<Props> = ({
       <div className="fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 transform">
         <div className="px-5">
           <div
-            className={`mx-auto overflow-hidden border border-neutral-300 bg-white p-11 shadow-xl dark:border-neutral-600 dark:bg-black md:w-[510px] ${
-              DISABLE_POWERED_BY_RESERVOIR ? ' rounded-2xl' : ' rounded-t-2xl'
-            }`}
+            className={`mx-auto overflow-hidden border border-neutral-300 bg-white p-11 shadow-xl dark:border-neutral-600 dark:bg-[#232149] md:w-[510px] rounded-[4px]`}
           >
             <div className="mb-4 flex items-center justify-between">
               <Dialog.Title className="reservoir-h4 font-headings dark:text-white">
@@ -69,14 +67,14 @@ const ModalCard: FC<Props> = ({
               orderbook && orderbook?.length > 1 ? (
                 <button
                   onClick={onContinue}
-                  className="btn-primary-fill w-full"
+                  className="btn-primary-outline w-full dark:border-[#232149] dark:ring-[#232149]  dark:text-white dark:focus:ring-4"
                 >
                   Continue
                 </button>
               ) : (
                 <Dialog.Close
                   onClick={onCloseCallback}
-                  className="btn-primary-outline w-full dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                  className="btn-primary-outline w-full dark:border-[#232149] dark:ring-[#302e62]  dark:text-white dark:focus:ring-4"
                 >
                   Success, Close this menu
                 </Dialog.Close>
@@ -85,7 +83,7 @@ const ModalCard: FC<Props> = ({
               <div className="flex gap-4">
                 <Dialog.Close
                   onClick={onCloseCallback}
-                  className="btn-primary-outline w-full dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                  className="btn-primary-outline w-full dark:border-[#232149]  dark:text-white dark:ring-[#56538e] dark:focus:ring-[#56538e] dark:focus:ring-4"
                 >
                   Cancel
                 </Dialog.Close>
@@ -93,7 +91,7 @@ const ModalCard: FC<Props> = ({
               </div>
             )}
           </div>
-          {!DISABLE_POWERED_BY_RESERVOIR && (
+          {/* {!DISABLE_POWERED_BY_RESERVOIR && (
             <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[510px]">
               <Link href="https://reservoirprotocol.github.io/">
                 <a
@@ -111,7 +109,7 @@ const ModalCard: FC<Props> = ({
                 </a>
               </Link>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </Dialog.Content>

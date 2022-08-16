@@ -29,7 +29,7 @@ const ExpirationSelector: FC<Props> = ({
         id="expirationSelector"
         defaultValue={expiration}
         onChange={(e) => setExpiration(e.target.value)}
-        className="input-primary-outline dark:border-neutral-600  dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
+        className="input-primary-outline dark:border-neutral-600  dark:bg-[#302e62] dark:ring-[#56538e] dark:focus:ring-4"
       >
         {presets.map(({ preset, display }) => (
           <option key={preset} value={preset}>

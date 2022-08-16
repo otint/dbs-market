@@ -203,7 +203,7 @@ const CollectionOfferModal: FC<Props> = ({
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
         disabled={isInTheWrongNetwork}
-        className="font-[Poppins] btn-primary-outline h-[30px] min-w-[222px] whitespace-nowrap rounded-[4px] border border-[#eeedf3] bg-[#eeedf3] bg-white font-bold text-[#5568fe] dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4"
+        className="btn-primary-outline h-[30px] min-w-[222px] whitespace-nowrap rounded-[4px] border border-[#eeedf3] bg-[#eeedf3] font-[Poppins] font-bold text-[#5568fe] dark:border-[#56538e] dark:bg-[#56538e] dark:text-white"
       >
         Make a collection offer
       </Dialog.Trigger>
@@ -228,7 +228,7 @@ const CollectionOfferModal: FC<Props> = ({
                   }
                   execute()
                 }}
-                className="btn-primary-fill w-full  dark:border-neutral-600 dark:ring-primary-900 dark:focus:ring-4"
+                className="btn-primary-fill w-full  rounded-[4px] border-[#5568fe] bg-[#5568fe] dark:ring-[#56538e] dark:focus:ring-4"
               >
                 {waitingTx ? (
                   <CgSpinner className="h-4 w-4 animate-spin" />
@@ -254,7 +254,7 @@ const CollectionOfferModal: FC<Props> = ({
                   step={0.01}
                   value={offerPrice}
                   onChange={(e) => setOfferPrice(e.target.value)}
-                  className="input-primary-outline w-[140px] dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4"
+                  className="input-primary-outline w-[140px] dark:border-neutral-600 dark:bg-[#302e62] dark:ring-[#56538e] dark:focus:ring-4"
                 />
               </div>
               <div className="flex items-center justify-between">

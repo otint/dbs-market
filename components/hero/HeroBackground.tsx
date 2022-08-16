@@ -20,10 +20,12 @@ const HeroBackground: FC<Props> = ({ banner, children }) => {
       {children}
       <div className="absolute inset-0 z-[-1] overflow-hidden">
         <div
-          className="absolute inset-0 h-[163px] bg-cover bg-center"
-          style={bannerImage ? {
+          className={`absolute inset-0 h-[163px] bg-cover bg-center ${
+            bannerImage ? '' : 'bg-[#ddd] dark:bg-[#1a1836]'
+          }`}
+          style={{
             backgroundImage: `url(${bannerImage})`,
-          } : {backgroundColor: '#ddd'}}
+          }}
         />
       </div>
       <div className="absolute inset-0 z-0" />

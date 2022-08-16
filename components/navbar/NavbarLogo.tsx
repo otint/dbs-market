@@ -6,6 +6,7 @@ const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
 const DESKTOP_NAVBAR_LOGO = process.env.NEXT_PUBLIC_DESKTOP_NAVBAR_LOGO
 const NAVBAR_LOGO_LINK = process.env.NEXT_PUBLIC_NAVBAR_LOGO_LINK
+const DARK_MODE_ENABLED = process.env.NEXT_PUBLIC_DARK_MODE || true
 
 type Props = {
   variant?: 'desktop' | 'mobile' | undefined
@@ -14,8 +15,14 @@ type Props = {
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/reservoir.svg'
-  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/icons/logo.svg' || '/reservoir-desktop.svg'
-  const desktopLogoType = '/icons/logotype.svg'
+  // const desktopLogo = DESKTOP_NAVBAR_LOGO || '/icons/logo.svg' || '/reservoir-desktop.svg'
+  // const desktopLogoType = '/icons/logotype.svg'
+  const desktopLogo = DARK_MODE_ENABLED
+    ? '/icons/logo-dark.svg'
+    : '/icons/logo.svg'
+  const desktopLogoType = DARK_MODE_ENABLED
+    ? '/icons/logotype-dark.svg'
+    : '/icons/logotype.svg'
   const logoAlt = SOURCE_ID ? `${SOURCE_ID} Logo` : 'Reservoir Logo'
   const mobileVariant = variant == 'mobile'
   const desktopVariant = variant == 'desktop'
@@ -24,7 +31,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   return (
     <Link href={NAVBAR_LOGO_LINK || '/'}>
       <a
-        className={`relative inline-flex flex-none justify-space-between items-center gap-1 ${className}`}
+        className={`justify-space-between relative inline-flex flex-none items-center gap-1 ${className}`}
       >
         <img
           src={logo}
@@ -40,13 +47,17 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
         />
-        {desktopLogoType ? <img
-          src={desktopLogoType}
-          alt={logoAlt}
-          className={`h-[8px] w-auto md:block ${
-            !variant ? 'hidden md:block' : ''
-          } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
-        /> : null}
+        {desktopLogoType ? (
+          <img
+            src={desktopLogoType}
+            alt={logoAlt}
+            className={`h-[8px] w-auto md:block ${
+              !variant ? 'hidden md:block' : ''
+            } ${mobileVariant ? 'hidden' : ''} ${
+              desktopVariant ? 'block' : ''
+            }`}
+          />
+        ) : null}
         {isTestNet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]

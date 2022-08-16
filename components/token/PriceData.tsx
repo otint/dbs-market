@@ -55,7 +55,7 @@ const PriceData: FC<Props> = ({ details, collection }) => {
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
-      <article className="rounded-[4px] border border-gray-200 bg-white dark:border-neutral-600 dark:bg-black">
+      <article className="rounded-[4px] border border-gray-200 bg-white dark:border-[#56538e] dark:bg-[#302e62]">
         <div className="flex flex-col gap-6 m-5">
           <div className='grid grid-cols-6 gap-6'>
             <Price
@@ -146,7 +146,7 @@ const PriceData: FC<Props> = ({ details, collection }) => {
         <div
           className={`${
             (isOwner && isListed) || isTopBidder ? 'mt-6' : ''
-          } flex justify-center border-t-[1px] border-gray border-top py-2 font-[Poppins]`}
+          } flex justify-center border-t-[1px] border-gray py-2 font-[Poppins] dark:border-[#56538e]`}
         >
           <CancelOffer
             data={{

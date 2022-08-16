@@ -1,10 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256px" height="417px" viewBox="0 0 256 417" version="1.1" preserveAspectRatio="xMidYMid">
-	<g>
-		<polygon fill="#343434" points="127.9611 0 125.1661 9.5 125.1661 285.168 127.9611 287.958 255.9231 212.32"/>
-		<polygon fill="#8C8C8C" points="127.962 0 0 212.32 127.962 287.959 127.962 154.158"/>
-		<polygon fill="#3C3C3B" points="127.9611 312.1866 126.3861 314.1066 126.3861 412.3056 127.9611 416.9066 255.9991 236.5866"/>
-		<polygon fill="#8C8C8C" points="127.962 416.9052 127.962 312.1852 0 236.5852"/>
-		<polygon fill="#141414" points="127.9611 287.9577 255.9211 212.3207 127.9611 154.1587"/>
-		<polygon fill="#393939" points="0.0009 212.3208 127.9609 287.9578 127.9609 154.1588"/>
-	</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="8.596" height="14" viewBox="0 0 8.596 14">
+    <path data-name="Path 61647" d="m424.4 80.7-4.3 7.13 4.3-1.953z" style="fill:#8a92b2" transform="translate(-420.1 -80.7)"/>
+    <path data-name="Path 61648" d="m424.4 731-4.3 1.953 4.3 2.54z" transform="translate(-420.1 -725.823)" style="fill:#62688f"/>
+    <path data-name="Path 61649" d="m964.1 87.83-4.3-7.13v5.177z" transform="translate(-955.503 -80.7)" style="fill:#62688f"/>
+    <path data-name="Path 61650" d="m959.8 735.493 4.3-2.54-4.3-1.953z" transform="translate(-955.503 -725.823)" style="fill:#454a75"/>
+    <path data-name="Path 61651" d="m420.1 1078.7 4.3 6.055v-3.516z" transform="translate(-420.1 -1070.755)" style="fill:#8a92b2"/>
+    <path data-name="Path 61652" d="M959.8 1081.239v3.516l4.3-6.055z" transform="translate(-955.503 -1070.755)" style="fill:#62688f"/>
 </svg>

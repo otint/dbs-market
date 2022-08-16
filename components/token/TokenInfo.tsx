@@ -66,8 +66,8 @@ const TokenInfo: FC<Props> = ({ details }) => {
   }
 
   return (
-    <article className="bg-white col-start-5 col-span-4 dark:border-neutral-600 dark:bg-black">
-      <div className="flex items-center justify-between border border-gray-200 rounded-t-[4px] p-3 pb-2">
+    <article className="bg-white col-start-5 col-span-4 dark:border-neutral-600 dark:bg-[#302e62]">
+      <div className="flex items-center justify-between border border-gray-200 rounded-t-[4px] p-3 pb-2 dark:border-[#56538e]">
         <div className="reservoir-h5 font-[Poppins] font-normal text-[14px] dark:text-white">
           Token Info
         </div>
@@ -116,7 +116,7 @@ const TokenInfo: FC<Props> = ({ details }) => {
             </div>
           </div>
         )}
-        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between">
+        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between dark:bg-[#232149]">
           <div className="reservoir-subtitle text-[14px] font-light font-[Poppins] dark:text-white">Token ID</div>
           <div className="reservoir-h6 max-w-[80px] truncate text-[#5568FE] font-[Poppins]  dark:text-white">
             {token?.token?.tokenId}
@@ -128,7 +128,7 @@ const TokenInfo: FC<Props> = ({ details }) => {
             {token?.token?.kind}
           </div>
         </div>
-        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between">
+        <div className="p-3 bg-[#F6F6F9] flex items-center justify-between dark:bg-[#232149]">
           <div className="reservoir-subtitle text-[14px] font-light font-[Poppins] dark:text-white">
             Metadata Refresh
           </div>

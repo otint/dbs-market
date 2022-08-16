@@ -20,7 +20,7 @@ const Owner: FC<Props> = ({ details, bannedOnOpenSea }) => {
 
   return (
     <div className="col-span-full">
-      <article className="bg-white dark:border-neutral-600 dark:bg-black">
+      <article className="bg-white dark:border-neutral-600 dark:bg-[#232149]">
         <div className="reservoir-h3 mb-1 flex items-center gap-4 overflow-hidden font-headings dark:text-white">
           <div className="font-[Poppins]">{`#${token?.token?.tokenId}`}</div>
           {bannedOnOpenSea && (
@@ -59,7 +59,7 @@ const Owner: FC<Props> = ({ details, bannedOnOpenSea }) => {
           {owner && (
             <Link href={`/address/${owner}`}>
               <a className="ml-2 inline-block font-[Poppins] text-[14px] font-bold text-[#5568FE]">
-                <EthAccount address={owner} side="left" />
+                <EthAccount address={owner} side="left" classes='block whitespace-nowrap font-mono text-[#5568FE]'/>
               </a>
             </Link>
           )}
