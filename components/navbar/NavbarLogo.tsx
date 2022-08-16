@@ -17,7 +17,6 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/reservoir.svg'
   // const desktopLogo = DESKTOP_NAVBAR_LOGO || '/icons/logo.svg' || '/reservoir-desktop.svg'
   // const desktopLogoType = '/icons/logotype.svg'
-  console.log(DARK_MODE_ENABLED)
   const desktopLogo = DARK_MODE_ENABLED
     ? '/icons/logo-dark.svg'
     : '/icons/logo.svg'
