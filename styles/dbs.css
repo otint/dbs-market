@@ -1,0 +1,12 @@
+header {
+    margin-top: 1rem !important; 
+    margin-bottom: 1rem !important;
+}
+header h1 {
+    font-size: 20px !important;
+    padding: 0 50px !important;
+}
+
+.reservoir-h4 {
+    display:none !important;
+}
