@@ -3,10 +3,17 @@ header {
     margin-bottom: 1rem !important;
 }
 header h1 {
-    font-size: 20px !important;
-    padding: 0 50px !important;
+    font-size: 18px !important;
+    padding: 0 40px !important;
 }
 
 .reservoir-h4 {
     display:none !important;
+}
+
+@media (min-width: 884px) {
+    header h1 { 
+        font-size: 20px !important;
+        padding: 0 200px !important; 
+    }
 }
