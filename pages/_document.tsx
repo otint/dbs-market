@@ -91,6 +91,8 @@ const MyDocument = function () {
           ))
         : null}
 
+      <script defer data-domain="underground.deadbirds.io" src="https://plausible.io/js/plausible.js"></script>
+
       <body className="bg-white text-neutral-800 dark:bg-black dark:text-white">
         <Main />
         <NextScript />
