@@ -60,6 +60,7 @@ import presetColors from '../colors'
 const FEE_BPS = process.env.NEXT_PUBLIC_FEE_BPS
 const FEE_RECIPIENT = process.env.NEXT_PUBLIC_FEE_RECIPIENT
 const SOURCE_DOMAIN = process.env.NEXT_PUBLIC_SOURCE_DOMAIN
+const API_BASE = process.env.NEXT_PUBLIC_RESERVOIR_API_BASE
 
 // Set up chains
 const { chains, provider } = configureChains(allChains, [
@@ -177,6 +178,8 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
 
   if (appContext.ctx.req?.headers.host) {
     baseUrl = `http://${appContext.ctx.req?.headers.host}`
+  } else if (API_BASE) {
+    baseUrl = API_BASE
   }
 
   return { ...appProps, baseUrl }
