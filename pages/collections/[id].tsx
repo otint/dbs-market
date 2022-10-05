@@ -24,12 +24,11 @@ import ExploreTokens from 'components/ExploreTokens'
 import TokensGrid from 'components/TokensGrid'
 import Head from 'next/head'
 import FormatEth from 'components/FormatEth'
-import useAttributes from 'hooks/useAttributes'
 import * as Tabs from '@radix-ui/react-tabs'
 import { toggleOnItem } from 'lib/router'
 import CollectionActivityTable from 'components/tables/CollectionActivityTable'
 import Sweep from 'components/Sweep'
-import { useCollections } from '@reservoir0x/reservoir-kit-ui'
+import { useCollections, useAttributes } from '@reservoir0x/reservoir-kit-ui'
 
 // Environment variables
 // For more information about these variables
@@ -207,7 +206,7 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
           <Tabs.Content value="items" asChild>
             <>
               <Sidebar
-                attributes={attributes}
+                attributes={attributes.data}
                 refreshData={() => {
                   tokens.setSize(1)
                 }}
@@ -220,7 +219,7 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
                         <div>{formatNumber(tokenCount)} items</div>
 
                         <div className="h-9 w-px bg-gray-300 dark:bg-neutral-600"></div>
-                        <div>
+                        <div className="flex items-center gap-1">
                           <FormatEth
                             amount={stats?.data?.stats?.market?.floorAsk?.price}
                           />{' '}

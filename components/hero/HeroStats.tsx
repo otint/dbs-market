@@ -1,11 +1,19 @@
 import { FC } from 'react'
 import FormatEth from 'components/FormatEth'
 import { formatNumber } from 'lib/numbers'
-import FormatWEth from 'components/FormatWEth'
+import FormatCrypto from 'components/FormatCrypto'
+import { useCollections } from '@reservoir0x/reservoir-kit-ui'
+
+type Currency = NonNullable<
+  NonNullable<
+    NonNullable<ReturnType<typeof useCollections>['data']>[0]['topBid']
+  >['price']
+>['currency']
 
 type Props = {
   count: number
   topOffer: number | undefined
+  topOfferCurrency: Currency
   floor: number | undefined
   allTime: number | undefined
   volumeChange: number | undefined
@@ -22,7 +30,11 @@ const HeroStats: FC<{ stats: Props }> = ({ stats }) => {
       </Stat>
       <Stat name="top offer">
         <h3 className="reservoir-h6 dark:text-white">
-          <FormatWEth amount={stats.topOffer} />
+          <FormatCrypto
+            amount={stats.topOffer}
+            decimals={stats.topOfferCurrency?.decimals}
+            address={stats.topOfferCurrency?.contract}
+          />
         </h3>
       </Stat>
       <Stat name="floor">
