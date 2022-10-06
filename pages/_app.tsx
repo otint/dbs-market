@@ -158,7 +158,6 @@ function MyApp({
               domain="underground.deadbirds.io"
               selfHosted={true}
               enabled={true}
-              trackLocalhost={true}
             >
               <AnalyticsProvider>
                 <ThemeProvider
