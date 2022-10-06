@@ -57,6 +57,7 @@ const PRIMARY_COLOR = process.env.NEXT_PUBLIC_PRIMARY_COLOR || 'default'
 const DISABLE_POWERED_BY_RESERVOIR =
   process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
 import presetColors from '../colors'
+import PlausibleProvider from 'next-plausible'
 const FEE_BPS = process.env.NEXT_PUBLIC_FEE_BPS
 const FEE_RECIPIENT = process.env.NEXT_PUBLIC_FEE_RECIPIENT
 const SOURCE_DOMAIN = process.env.NEXT_PUBLIC_SOURCE_DOMAIN
@@ -153,17 +154,24 @@ function MyApp({
       <GlobalProvider>
         <RecoilRoot>
           <WagmiConfig client={client}>
-            <AnalyticsProvider>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme={defaultTheme}
-                forcedTheme={
-                  !THEME_SWITCHING_ENABLED ? defaultTheme : undefined
-                }
-              >
-                <Component {...pageProps} />
-              </ThemeProvider>
-            </AnalyticsProvider>
+            <PlausibleProvider
+              domain="underground.deadbirds.io"
+              selfHosted={true}
+              enabled={true}
+              trackLocalhost={true}
+            >
+              <AnalyticsProvider>
+                <ThemeProvider
+                  attribute="class"
+                  defaultTheme={defaultTheme}
+                  forcedTheme={
+                    !THEME_SWITCHING_ENABLED ? defaultTheme : undefined
+                  }
+                >
+                  <Component {...pageProps} />
+                </ThemeProvider>
+              </AnalyticsProvider>
+            </PlausibleProvider>
           </WagmiConfig>
         </RecoilRoot>
       </GlobalProvider>
