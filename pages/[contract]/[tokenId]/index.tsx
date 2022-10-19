@@ -11,6 +11,7 @@ import CollectionInfo from 'components/token/CollectionInfo'
 import Owner from 'components/token/Owner'
 import PriceData from 'components/token/PriceData'
 import TokenMedia from 'components/token/TokenMedia'
+import MoonbirdCard from 'components/dbs/MoonbirdCard'
 import { useEffect, useState } from 'react'
 import { TokenDetails } from 'types/reservoir'
 import {
@@ -41,6 +42,7 @@ const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 type Props = {
   collectionId: string
   tokenDetails?: TokenDetails
+  moonbird?: Object
 }
 
 const metadata = {
@@ -65,7 +67,7 @@ const metadata = {
   ),
 }
 
-const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
+const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
   const [tokenOpenSea, setTokenOpenSea] = useState<any>({
     animation_url: null,
     extension: null,
@@ -153,7 +155,11 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
         </div>
       </div>
       <div className="col-span-full mb-4 space-y-4 px-2 md:col-span-4 md:col-start-5 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
-        <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
+        {moonbird?.nesting ? (
+          <MoonbirdCard token={token.token} moonbird={moonbird} />
+        ) : (
+          <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
+        )}
         <PriceData details={tokenData} collection={collection} />
         <TokenAttributes token={token?.token} collection={collection} />
         {token.token?.kind === 'erc1155' && (
@@ -229,7 +235,16 @@ export const getStaticProps: GetStaticProps<{
     }
   }
 
+  // Fetch moonbird details
+  let moonbird: Object = null
+  if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && data?.tokens?.[0]?.token) {
+    const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + data?.tokens?.[0]?.token?.tokenId
+    const mbRes = await fetch(mbHref)
+    const mbData = await mbRes.json()
+    moonbird = mbData.moonbird
+  }
+
   return {
-    props: { collectionId, tokenDetails: data?.tokens?.[0]?.token },
+    props: { collectionId, tokenDetails: data?.tokens?.[0]?.token, moonbird },
   }
 }
