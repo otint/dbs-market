@@ -156,7 +156,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
       </div>
       <div className="col-span-full mb-4 space-y-4 px-2 md:col-span-4 md:col-start-5 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
         {moonbird?.nesting ? (
-          <MoonbirdCard token={token.token} moonbird={moonbird} />
+          <MoonbirdCard token={token.token} moonbird={moonbird} bannedOnOpenSea={bannedOnOpenSea} />
         ) : (
           <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
         )}
@@ -237,8 +237,8 @@ export const getStaticProps: GetStaticProps<{
 
   // Fetch moonbird details
   let moonbird: Object = null
-  if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && data?.tokens?.[0]?.token) {
-    const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + data?.tokens?.[0]?.token?.tokenId
+  if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && tokenId) {
+    const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + tokenId
     const mbRes = await fetch(mbHref)
     const mbData = await mbRes.json()
     moonbird = mbData.moonbird
