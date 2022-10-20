@@ -61,7 +61,7 @@ const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
         )}
       </div>
 
-      <div class="moonbird-owner">
+      <div className="moonbird-owner">
         <div className="reservoir-h6 mb-2 font-headings dark:text-white">
           Owner
         </div>
@@ -76,74 +76,74 @@ const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
 
       <div className="mb-9 flex items-center justify-between">
 
-        <div class="mt-0 lg:mt-1 lg:mb-1 mr-6">
+        <div className="mt-0 lg:mt-1 lg:mb-1 mr-6">
           <img src={nest.image} width="128" height="128" />
         </div>
-        <div class="flex-1 mt-6 lg:mt-0">
-          <label class="label label-md text-sm font-bold tracking-wide uppercase leading-6 text-content-light-secondary dark:text-content-dark-secondary">
+        <div className="flex-1 mt-6 lg:mt-0">
+          <label className="label label-md text-sm font-bold tracking-wide uppercase leading-6 text-content-light-secondary dark:text-content-dark-secondary">
             Nest Level
           </label>
-          <h1 class="font-bold text-2xl text-content-light-primary dark:text-content-dark-primary">
+          <h1 className="font-bold text-2xl text-content-light-primary dark:text-content-dark-primary">
             {nestName} Nest
           </h1>
         </div>
 
       </div>
-      <table class="w-full text-left">
-        <caption class="text-left">
-          <p class="font-semibold leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
+      <table className="w-full text-left">
+        <caption className="text-left">
+          <p className="font-semibold leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
             Nesting Information
           </p>
         </caption>
         <tbody>
           {nesting?.nested && (
             <>
-              <tr class="h-7">
+              <tr className="h-7">
                 <th>
-                  <p class="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
+                  <p className="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
                     Nesting Streak 
                   </p>
                 </th>
-                <td class="lg:w-1/2">
-                  <p class="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
+                <td className="lg:w-1/2">
+                  <p className="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
                     {duraNestIn}
                   </p>
                 </td>
               </tr>
-              <tr class="h-7">
+              <tr className="h-7">
                 <th>
-                  <p class="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
+                  <p className="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
                     {nextNest?.name || 'Next'} Nest in 
                   </p>
                 </th>
-                <td class="lg:w-1/2">
-                  <p class="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
+                <td className="lg:w-1/2">
+                  <p className="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
                     {nextNestIn}
                   </p>
                 </td>
               </tr>
-              <tr class="h-7">
+              <tr className="h-7">
                 <th>
-                  <p class="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
+                  <p className="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
                     {nestName} Nest achieved on
                   </p>
                 </th>
-                <td class="lg:w-1/2">
-                  <p class="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
+                <td className="lg:w-1/2">
+                  <p className="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
                     {format(currNestAt, 'LLLL do yyyy, h:mm:ss aaa')}
                   </p>
                 </td>
               </tr>
             </>
           )}
-          <tr class="h-7">
+          <tr className="h-7">
             <th>
-              <p class="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
+              <p className="font-semibold leading-6 text-[14px] text-content-light-secondary dark:text-content-dark-secondary">
                 Total lifetime Nesting time
               </p>
             </th>
-            <td class="lg:w-1/2">
-              <p class="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
+            <td className="lg:w-1/2">
+              <p className="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
                 {totalNestIn}
               </p>
             </td>
