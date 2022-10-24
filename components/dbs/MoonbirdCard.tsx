@@ -8,16 +8,16 @@ import { FiAlertCircle } from 'react-icons/fi'
 
 type Props = {
   token?: TokenDetails
-  moonbird?: Object
+  moonbird?: any
   bannedOnOpenSea: boolean
 }
 
 const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
   const owner = token?.owner
 
-  const duration = (s) => formatDistance(0, s * 1000, { includeSeconds: true })
+  const duration = (s: number) => formatDistance(0, s * 1000, { includeSeconds: true })
 
-  const nests: array = [
+  const nests: Array<any> = [
     { name: 'Straw', image: '/icons/nests/Straw.png' },
     { name: 'Bronze', image: '/icons/nests/Bronze.png' },
     { name: 'Silver', image: '/icons/nests/Silver.png' },
@@ -25,18 +25,18 @@ const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
     { name: 'Diamond', image: '/icons/nests/Diamond.png' }
   ]
 
-  const nesting: Object = moonbird?.nesting
+  const nesting: any = moonbird?.nesting
   const isNested: boolean = nesting?.nested
   const nestName: string = nesting?.nestLevel
   const totalNestIn: string = duration(nesting?.totalDuration)
 
   // If is nested
-  const nest: Object = nests[nests.findIndex(n => n.name === nestName)]
-  const nextNest: string = isNested && nests[nests.findIndex(n => n.name === nestName) + 1]
-  const currNestAt: Date = isNested && parseISO(nesting?.currentNestLevelStartedAt)
-  const nextNestAt: Date = isNested && parseISO(nesting?.nextNestLevelAt)
-  const nextNestIn: string = isNested && formatDistanceToNow(nextNestAt, { roundingMethod: 'ceil' })
-  const duraNestIn: string = isNested && duration(nesting?.currentDuration)
+  const nest = nests[nests.findIndex(n => n.name === nestName)]
+  const nextNest = isNested && nests[nests.findIndex(n => n.name === nestName) + 1]
+  const currNestAt = isNested && parseISO(nesting?.currentNestLevelStartedAt)
+  const nextNestAt = isNested && parseISO(nesting?.nextNestLevelAt)
+  const nextNestIn = nextNestAt && formatDistanceToNow(nextNestAt)
+  const duraNestIn = isNested && duration(nesting?.currentDuration)
 
   return (
     <article className="moonbird-card col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
@@ -130,7 +130,7 @@ const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
                 </th>
                 <td className="lg:w-1/2">
                   <p className="leading-6 text-[14px] text-content-light-primary dark:text-content-dark-primary">
-                    {format(currNestAt, 'LLLL do yyyy, h:mm:ss aaa')}
+                    {currNestAt && format(currNestAt, 'LLLL do yyyy, h:mm:ss aaa')}
                   </p>
                 </td>
               </tr>

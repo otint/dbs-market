@@ -42,7 +42,7 @@ const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 type Props = {
   collectionId: string
   tokenDetails?: TokenDetails
-  moonbird?: Object
+  moonbird?: any
 }
 
 const metadata = {
@@ -236,7 +236,7 @@ export const getStaticProps: GetStaticProps<{
   }
 
   // Fetch moonbird details
-  let moonbird: Object = null
+  let moonbird: Object | undefined
   if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && tokenId) {
     const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + tokenId
     const mbRes = await fetch(mbHref)
