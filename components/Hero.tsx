@@ -126,8 +126,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     shortDescription: description ? description.slice(0, 150) : description,
   }
 
-  const isSupported =
-    !!collection?.tokenSetId && !!collection?.collectionBidSupported
+  const isSupported = !!collection?.collectionBidSupported
 
   const isAttributeModal = !!attribute
 
@@ -146,7 +145,9 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
       <HeroBackground banner={header.banner}>
         <div className="z-10 flex w-full flex-col items-center gap-6">
           <img
-            className="h-20 w-20 rounded-full"
+            className={`h-20 w-20 rounded-full ${
+              header.image ? 'visible' : 'hidden'
+            }`}
             alt={`${header.name} Logo`}
             src={header.image}
           />
@@ -165,7 +166,10 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
                   ref={descriptionRef}
                   className="text-center text-sm text-[#262626] transition-[width] duration-300 ease-in-out dark:text-white"
                 >
-                  <ReactMarkdown linkTarget="_blank">
+                  <ReactMarkdown
+                    className="markdown-support"
+                    linkTarget="_blank"
+                  >
                     {header.description}
                   </ReactMarkdown>
                 </p>
