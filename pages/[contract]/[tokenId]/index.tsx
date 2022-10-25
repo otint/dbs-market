@@ -19,6 +19,7 @@ import {
   useTokens,
   useCollections,
 } from '@reservoir0x/reservoir-kit-ui'
+import { useAccount } from 'wagmi'
 
 // Environment variables
 // For more information about these variables
@@ -72,6 +73,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
     animation_url: null,
     extension: null,
   })
+  const account = useAccount()
   const router = useRouter()
   const bannedOnOpenSea = useTokenOpenseaBanned(
     collectionId,
@@ -138,6 +140,9 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
     ? metadata.image(token?.token?.image)
     : null
 
+  const isOwner =
+    token?.token?.owner?.toLowerCase() === account?.address?.toLowerCase()
+
   return (
     <Layout navbar={{}}>
       <Head>
@@ -145,23 +150,27 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
         {description}
         {image}
       </Head>
-      <div className="col-span-full content-start space-y-4 px-2 md:col-span-4 lg:col-span-5 lg:col-start-2 lg:px-0 2xl:col-span-4 2xl:col-start-3 3xl:col-start-5 4xl:col-start-7">
+      <div className="col-span-full content-start space-y-4 px-2 pt-4 md:col-span-4 lg:col-span-5 lg:col-start-2 lg:px-0 2xl:col-span-4 2xl:col-start-3 3xl:col-start-5 4xl:col-start-7">
         <div className="mb-4">
-          <TokenMedia token={token.token} tokenOpenSea={tokenOpenSea} />
+          <TokenMedia token={token.token} />
         </div>
         <div className="hidden space-y-4 md:block">
           <CollectionInfo collection={collection} token={token.token} />
           <TokenInfo token={token.token} />
         </div>
       </div>
-      <div className="col-span-full mb-4 space-y-4 px-2 md:col-span-4 md:col-start-5 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
+      <div className="col-span-full mb-4 space-y-4 px-2 pt-0 md:col-span-4 md:col-start-5 md:pt-4 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
         {moonbird?.nesting ? (
           <MoonbirdCard token={token.token} moonbird={moonbird} bannedOnOpenSea={bannedOnOpenSea} />
         ) : (
           <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
         )}
         <PriceData details={tokenData} collection={collection} />
-        <TokenAttributes token={token?.token} collection={collection} />
+        <TokenAttributes
+          token={token?.token}
+          collection={collection}
+          isOwner={isOwner}
+        />
         {token.token?.kind === 'erc1155' && (
           <Listings
             token={`${router.query?.contract?.toString()}:${router.query?.tokenId?.toString()}`}
