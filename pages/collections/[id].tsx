@@ -26,9 +26,9 @@ import Head from 'next/head'
 import FormatEth from 'components/FormatEth'
 import * as Tabs from '@radix-ui/react-tabs'
 import { toggleOnItem } from 'lib/router'
-import CollectionActivityTable from 'components/tables/CollectionActivityTable'
 import Sweep from 'components/Sweep'
 import { useCollections, useAttributes } from '@reservoir0x/reservoir-kit-ui'
+import CollectionActivityTab from 'components/tables/CollectionActivityTab'
 
 // Environment variables
 // For more information about these variables
@@ -38,7 +38,7 @@ import { useCollections, useAttributes } from '@reservoir0x/reservoir-kit-ui'
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 
 // OPTIONAL
-const RESERVOIR_API_KEY = process.env.RESERVOIR_API_KEY
+const RESERVOIR_API_KEY = process.env.NEXT_PUBLIC_RESERVOIR_API_KEY
 
 const envBannerImage = process.env.NEXT_PUBLIC_BANNER_IMAGE
 
@@ -299,9 +299,9 @@ const Home: NextPage<Props> = ({ fallback, id }) => {
           </Tabs.Content>
           <Tabs.Content
             value="activity"
-            className="col-span-full mx-[25px] grid lg:col-start-2 lg:col-end-[-2]"
+            className="col-span-full mx-[25px] grid pt-2 lg:col-start-2 lg:col-end-[-2]"
           >
-            <CollectionActivityTable collection={collection} />
+            <CollectionActivityTab collectionId={id} />
           </Tabs.Content>
         </Tabs.Root>
       </>
