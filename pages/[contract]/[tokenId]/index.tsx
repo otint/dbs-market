@@ -12,6 +12,7 @@ import Owner from 'components/token/Owner'
 import PriceData from 'components/token/PriceData'
 import TokenMedia from 'components/token/TokenMedia'
 import MoonbirdCard from 'components/dbs/MoonbirdCard'
+import MoonbirdRewards from 'components/dbs/MoonbirdRewards'
 import { useEffect, useState } from 'react'
 import { TokenDetails } from 'types/reservoir'
 import {
@@ -166,6 +167,9 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
           <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
         )}
         <PriceData details={tokenData} collection={collection} />
+        {moonbird?.rewards?.rewards && (
+          <MoonbirdRewards moonbird={moonbird} />
+        )}
         <TokenAttributes
           token={token?.token}
           collection={collection}
@@ -245,12 +249,18 @@ export const getStaticProps: GetStaticProps<{
   }
 
   // Fetch moonbird details
-  let moonbird: Object | undefined
+  let moonbird: any
   if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && tokenId) {
     const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + tokenId
     const mbRes = await fetch(mbHref)
     const mbData = await mbRes.json()
     moonbird = mbData.moonbird
+
+    // Fetch rewards
+    if (moonbird) {
+      const mbrRes = await fetch('https://nest.moonbirds.xyz/api/rewards/' + tokenId)
+      moonbird.rewards = await mbrRes.json() || []
+    }
   }
 
   return {

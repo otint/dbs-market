@@ -67,6 +67,26 @@ html.dark {
   }
 }
 
+// Moonbird Rewards box
+.moonbird-rewards {
+
+  .rewards-row {
+
+    &.reward-claimed { }
+    &.reward-unclaimed {
+      opacity: 0.66;
+    }
+
+    .reward-desc {
+      opacity: 0.66;
+    }
+
+    .award-redeemed {
+      color: #AEA4EF;
+    }
+  }
+}
+
 // Token Attributes box
 // article.col-span-full .grid.max-h-\[440px\] {
 //   overflow-y: visible;
