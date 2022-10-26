@@ -16,7 +16,7 @@ import 'styles/gothicusroman.css'
 import 'styles/roobert.css'
 import 'styles/rodger.css'
 import 'styles/ingrammono.css'
-import 'styles/dbs.css'
+import 'styles/dbs.scss'
 import type { AppContext, AppProps } from 'next/app'
 import { default as NextApp } from 'next/app'
 import {

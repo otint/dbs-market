@@ -1,0 +1,73 @@
+header {
+    margin-top: 1rem !important; 
+    margin-bottom: 1rem !important;
+}
+header h1 {
+    font-size: 18px !important;
+    padding: 0 40px !important;
+}
+
+.reservoir-h4 {
+    display:none !important;
+}
+
+@media (min-width: 884px) {
+    header h1 { 
+        font-size: 20px !important;
+        padding: 0 200px !important; 
+    }
+}
+
+// Global theme alters
+html.dark {
+
+  // Body
+  body.dark\:bg-black {
+    background-color: #000;
+  }
+
+  // Navbar
+  nav.dark\:bg-black {
+    background-color: #222; 
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(82, 82, 82, 0.4);
+    background-image: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+    background-repeat: no-repeat;
+  }
+
+  // Box
+  article.dark\:bg-black {
+    border: none;
+    border-top: 1px solid rgba(82, 82, 82, 0.7);
+    background-image: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 70px);
+    background-repeat: no-repeat;
+  }
+}
+
+// Moonbird Card
+.moonbird-card {
+
+  label {
+    color: #888;
+  }
+  .leading-6 {
+    color: #888;
+  }
+  th p.leading-6, td p.leading-6 {
+    color: #fff;
+  }
+
+  @media (min-width: 1280px) {
+    position: relative;
+    .moonbird-owner {
+      position: absolute;
+      top: 30px;
+      right: 60px;
+    }
+  }
+}
+
+// Token Attributes box
+// article.col-span-full .grid.max-h-\[440px\] {
+//   overflow-y: visible;
+// }
