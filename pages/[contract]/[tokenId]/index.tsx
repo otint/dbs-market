@@ -249,7 +249,7 @@ export const getStaticProps: GetStaticProps<{
   }
 
   // Fetch moonbird details
-  let moonbird: any
+  let moonbird: any = null
   if (collectionId === '0x23581767a106ae21c074b2276d25e5c3e136a68b' && tokenId) {
     const mbHref = 'https://birdwatching.moonbirds.xyz/moonbirds/' + tokenId
     const mbRes = await fetch(mbHref)
