@@ -44,6 +44,28 @@ html.dark {
   }
 }
 
+// Token Heaading
+.token-heading {
+
+  & > div:first-child {
+    margin-bottom: 0;
+  }
+
+  .token-owner {
+    margin-top: 10px;
+  }
+
+  @media (min-width: 1280px) {
+    position: relative;
+    .token-owner {
+      position: absolute;
+      top: 19px;
+      right: 40px;
+      margin-top: 0;
+    }
+  }
+}
+
 // Moonbird Card
 .moonbird-card {
 
@@ -55,15 +77,6 @@ html.dark {
   }
   th p.leading-6, td p.leading-6 {
     color: #fff;
-  }
-
-  @media (min-width: 1280px) {
-    position: relative;
-    .moonbird-owner {
-      position: absolute;
-      top: 30px;
-      right: 60px;
-    }
   }
 }
 

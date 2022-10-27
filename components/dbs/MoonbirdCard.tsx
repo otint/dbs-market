@@ -1,20 +1,13 @@
 import { FC } from 'react'
-import EthAccount from 'components/EthAccount'
-import Link from 'next/link'
 import { TokenDetails } from 'types/reservoir'
 import { formatDistanceToNow, formatDistance, parseISO, format } from 'date-fns'
-import * as Tooltip from '@radix-ui/react-tooltip'
-import { FiAlertCircle } from 'react-icons/fi'
 
 type Props = {
   token?: TokenDetails
   moonbird?: any
-  bannedOnOpenSea: boolean
 }
 
-const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
-  const owner = token?.owner
-
+const MoonbirdCard: FC<Props> = ({ token, moonbird }) => {
   const duration = (s: number) => formatDistance(0, s * 1000, { includeSeconds: true })
 
   const nests: Array<any> = [
@@ -40,39 +33,6 @@ const MoonbirdCard: FC<Props> = ({ token, moonbird, bannedOnOpenSea }) => {
 
   return (
     <article className="moonbird-card col-span-full rounded-2xl border border-gray-300 bg-white p-6 dark:border-neutral-600 dark:bg-black">
-
-      <div className="reservoir-h3 mb-8 flex items-center gap-4 overflow-hidden font-headings dark:text-white">
-        <div>Moonbird {token?.name || `#${token?.tokenId}`}</div>
-        {bannedOnOpenSea && (
-          <Tooltip.Provider>
-            <Tooltip.Root delayDuration={0}>
-              <Tooltip.Trigger>
-                <FiAlertCircle className="h-6 w-6 text-[#FF3B3B]" />
-              </Tooltip.Trigger>
-              <Tooltip.Content
-                sideOffset={5}
-                className="reservoir-body-2 z-[10000] w-[191px] rounded-2xl bg-neutral-800 py-3 px-4 text-center text-white dark:bg-neutral-100 dark:text-black"
-              >
-                <Tooltip.Arrow className="fill-neutral-800 dark:fill-neutral-100" />
-                Token is not tradeable on OpenSea
-              </Tooltip.Content>
-            </Tooltip.Root>
-          </Tooltip.Provider>
-        )}
-      </div>
-
-      <div className="moonbird-owner">
-        <div className="reservoir-h6 mb-2 font-headings dark:text-white">
-          Owner
-        </div>
-        {owner && (
-          <Link href={`/address/${owner}`}>
-            <a className="inline-block">
-              <EthAccount address={owner} side="left" />
-            </a>
-          </Link>
-        )}
-      </div>
 
       <div className="mb-9 flex items-center justify-between">
 

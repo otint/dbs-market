@@ -11,6 +11,7 @@ import CollectionInfo from 'components/token/CollectionInfo'
 import Owner from 'components/token/Owner'
 import PriceData from 'components/token/PriceData'
 import TokenMedia from 'components/token/TokenMedia'
+import TokenHeading from 'components/dbs/TokenHeading'
 import MoonbirdCard from 'components/dbs/MoonbirdCard'
 import MoonbirdRewards from 'components/dbs/MoonbirdRewards'
 import { useEffect, useState } from 'react'
@@ -161,11 +162,10 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails, moonbird }) => {
         </div>
       </div>
       <div className="col-span-full mb-4 space-y-4 px-2 pt-0 md:col-span-4 md:col-start-5 md:pt-4 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
+        <TokenHeading token={token.token} moonbird={moonbird} bannedOnOpenSea={bannedOnOpenSea} />
         <PriceData details={tokenData} collection={collection} />
-        {moonbird?.nesting ? (
-          <MoonbirdCard token={token.token} moonbird={moonbird} bannedOnOpenSea={bannedOnOpenSea} />
-        ) : (
-          <Owner details={token} bannedOnOpenSea={bannedOnOpenSea} />
+        {moonbird?.nesting && (
+          <MoonbirdCard token={token.token} moonbird={moonbird} />
         )}
         {moonbird?.rewards?.rewards && (
           <MoonbirdRewards moonbird={moonbird} />
