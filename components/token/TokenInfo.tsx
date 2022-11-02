@@ -8,9 +8,10 @@ const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 
 type Props = {
   token?: TokenDetails
+  moonbird?: any
 }
 
-const TokenInfo: FC<Props> = ({ token }) => {
+const TokenInfo: FC<Props> = ({ token, moonbird }) => {
   const [refreshLoading, setRefreshLoading] = useState(false)
 
   // const token = details.data?.tokens?.[0]
@@ -72,6 +73,20 @@ const TokenInfo: FC<Props> = ({ token }) => {
           Token Info
         </div>
         <div className="flex items-center gap-2">
+          {moonbird?.nesting && (
+            <a
+              className="reservoir-h6 font-headings"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://nest.moonbirds.xyz/moonbirds/${token?.tokenId}`}
+            >
+              <img
+                src="/icons/Moonbirds.svg"
+                alt="Moonbirds Icon"
+                className="h-6 w-6"
+              />
+            </a>
+          )}
           <a
             className="reservoir-h6 font-headings"
             target="_blank"
