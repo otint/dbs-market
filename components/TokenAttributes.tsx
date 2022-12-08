@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import formatUrl from 'lib/formatUrl'
 import { FC } from 'react'
-import FormatEth from 'components/FormatEth'
+import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import {
   Collection,
   TokenDetails,
@@ -10,6 +10,7 @@ import {
 import { formatNumber } from 'lib/numbers'
 import * as Accordion from '@radix-ui/react-accordion'
 import { StyledChevron, StyledContent } from './radix/Accordion'
+import useMounted from 'hooks/useMounted'
 
 type Props = {
   token?: TokenDetails
@@ -18,9 +19,13 @@ type Props = {
 }
 
 const TokenAttributes: FC<Props> = ({ token, collection, isOwner }) => {
-  if (token?.attributes?.length === 0) return null
+  const isMounted = useMounted()
 
-  if (typeof window === 'undefined') return null
+  if (!isMounted) {
+    return null
+  }
+
+  if (!token?.attributes || token?.attributes?.length === 0) return null
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">
@@ -39,9 +44,8 @@ const TokenAttributes: FC<Props> = ({ token, collection, isOwner }) => {
           </Accordion.Header>
           <StyledContent className="grid max-h-[440px] grid-cols-1 gap-2 overflow-y-auto px-6 lg:grid-cols-2">
             {token?.attributes
-              ?.sort(
-                (a, b) => (b?.floorAskPrice || 0) - (a?.floorAskPrice || 0)
-              )
+              ?.slice()
+              .sort((a, b) => (b?.floorAskPrice || 0) - (a?.floorAskPrice || 0))
               .map((attribute) => (
                 <TokenAttribute
                   key={attribute.key}
@@ -94,7 +98,7 @@ const TokenAttribute: FC<TokenAttributeProps> = ({
             {attribute.value}
           </span>
           <span>
-            <FormatEth amount={attribute.floorAskPrice} />
+            <FormatNativeCrypto amount={attribute.floorAskPrice} />
           </span>
         </div>
         <div className="flex justify-between gap-1 text-xs dark:text-neutral-300">

@@ -16,10 +16,6 @@ The marketplace supports 3 different modes:
   
 With each deployment, communities are given full control over their marketplace from designing their look and feel to setting their own marketplace fees.
 
-We currently offer hosted and self hosted deployment options. For self hosted deployments you can simply fork this repository and follow the instructions below to configure and deploy your marketplace. For hosted deployments please submit your request and we will be in touch.
-
-[Submit your request for a Hosted Deployment here.](https://forms.gle/o6mbPJb7bwaG22pm6)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -101,7 +97,7 @@ If you'd like to contribute please follow the [guidelines](https://github.com/re
 ## Contact
 
 Twitter: [@reservoir0x](https://twitter.com/reservoir0x)
-Discord: [Reservoir Protocol](https://discord.gg/j5K9fESNwh)
-Project Link: [Reservoir Protocol](https://reservoirprotocol.github.io/)
+Discord: [Reservoir](https://discord.gg/j5K9fESNwh)
+Project Link: [Reservoir](https://reservoirprotocol.github.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>

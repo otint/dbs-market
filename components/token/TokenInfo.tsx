@@ -1,3 +1,4 @@
+import useEnvChain from 'hooks/useEnvChain'
 import { truncateAddress } from 'lib/truncateText'
 import React, { FC, useState } from 'react'
 import { FiExternalLink, FiRefreshCcw } from 'react-icons/fi'
@@ -13,8 +14,10 @@ type Props = {
 
 const TokenInfo: FC<Props> = ({ token, moonbird }) => {
   const [refreshLoading, setRefreshLoading] = useState(false)
+  const envChain = useEnvChain()
 
-  // const token = details.data?.tokens?.[0]
+  const blockExplorerBaseUrl =
+    envChain?.blockExplorers?.default?.url || 'https://etherscan.io'
 
   async function refreshToken(token: string | undefined) {
     function handleError(message?: string) {
@@ -123,7 +126,7 @@ const TokenInfo: FC<Props> = ({ token, moonbird }) => {
               className="reservoir-h6 flex items-center gap-2 font-headings text-primary-700 dark:text-primary-100"
               target="_blank"
               rel="noopener noreferrer"
-              href={`https://etherscan.io/address/${token?.contract}`}
+              href={`${blockExplorerBaseUrl}/address/${token?.contract}`}
             >
               {truncateAddress(token?.contract)}
               <FiExternalLink className="h-4 w-4" />
