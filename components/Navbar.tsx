@@ -9,6 +9,7 @@ import ThemeSwitcher from './ThemeSwitcher'
 import CartMenu from './CartMenu'
 import SearchMenu from './SearchMenu'
 import { useMediaQuery } from '@react-hookz/web'
+import useMounted from 'hooks/useMounted'
 
 const SearchCollections = dynamic(() => import('./SearchCollections'))
 const CommunityDropdown = dynamic(() => import('./CommunityDropdown'))
@@ -34,11 +35,13 @@ function getInitialSearchHref() {
 }
 
 const Navbar: FC = () => {
+  const isMounted = useMounted()
   const [showLinks, setShowLinks] = useState(true)
   const [filterComponent, setFilterComponent] = useState<ReactElement | null>(
     null
   )
-  const isMobile = useMediaQuery('(max-width: 520px)')
+  const isMobile = useMediaQuery('(max-width: 770px)')
+  const showDesktopSearch = useMediaQuery('(min-width: 1200px)')
   const [hasCommunityDropdown, setHasCommunityDropdown] =
     useState<boolean>(false)
 
@@ -94,9 +97,8 @@ const Navbar: FC = () => {
           )
           setHasCommunityDropdown(true)
         } else {
-          setShowLinks(false)
           setHasCommunityDropdown(false)
-          isMobile
+          !showDesktopSearch
             ? setFilterComponent(
                 <SearchMenu
                   communityId={COMMUNITY}
@@ -112,21 +114,21 @@ const Navbar: FC = () => {
         }
       })
     }
-  }, [filterableCollection, isMobile])
+  }, [filterableCollection, showDesktopSearch])
 
-  if (typeof window === 'undefined') return null
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <nav className="sticky top-0 z-[1000] col-span-full flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
       {showLinks && (
-        <div className="z-10 ml-12 hidden items-center gap-11 lg:flex">
+        <div className="z-10 ml-12 mr-12 hidden items-center gap-11 md:flex">
           {externalLinks.map(({ name, url }) => (
             <a
               key={url}
               href={url}
-              rel="noopener noreferrer"
-              target="_blank"
               className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
             >
               {name}
@@ -134,21 +136,29 @@ const Navbar: FC = () => {
           ))}
         </div>
       )}
-      <div
-        className={`flex ${
-          !hasCommunityDropdown && isMobile
-            ? 'ml-auto'
-            : 'h-full w-full items-center justify-center'
-        }`}
-      >
-        {filterComponent && filterComponent}
-      </div>
-      <CartMenu />
-      <HamburgerMenu externalLinks={externalLinks} />
-      <div className="z-10 ml-auto hidden shrink-0 md:flex md:gap-2">
-        <ConnectWallet />
-        <ThemeSwitcher />
-      </div>
+      {(hasCommunityDropdown || showDesktopSearch) && (
+        <div className="flex h-full w-full items-center">
+          {filterComponent && filterComponent}
+        </div>
+      )}
+      {isMobile ? (
+        <div className="ml-auto flex gap-x-5">
+          {!hasCommunityDropdown && filterComponent && filterComponent}
+          <CartMenu />
+          <HamburgerMenu externalLinks={externalLinks} />
+        </div>
+      ) : (
+        <div className="z-10 ml-auto shrink-0 gap-2 md:flex xl:gap-4">
+          {!hasCommunityDropdown && !showDesktopSearch && (
+            <div className="ml-auto flex">
+              {filterComponent && filterComponent}
+            </div>
+          )}
+          <CartMenu />
+          <ConnectWallet />
+          <ThemeSwitcher />
+        </div>
+      )}
     </nav>
   )
 }
