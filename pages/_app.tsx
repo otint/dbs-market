@@ -69,6 +69,7 @@ const PRIMARY_COLOR = process.env.NEXT_PUBLIC_PRIMARY_COLOR || 'default'
 const DISABLE_POWERED_BY_RESERVOIR =
   process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
 import presetColors from '../colors'
+import PlausibleProvider from 'next-plausible'
 
 const FEE_BPS = process.env.NEXT_PUBLIC_FEE_BPS
 const FEE_RECIPIENT = process.env.NEXT_PUBLIC_FEE_RECIPIENT
@@ -191,6 +192,11 @@ const App: FC<AppProps & { baseUrl: string }> = ({
       <GlobalProvider>
         <RecoilRoot>
           <WagmiConfig client={wagmiClient}>
+            <PlausibleProvider
+              domain="underground.deadbirds.io"
+              selfHosted={true}
+              enabled={true}
+            >
             <RainbowKitProvider
               chains={chains}
               theme={rainbowKitTheme}

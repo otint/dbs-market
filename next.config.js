@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+const { withPlausibleProxy } = require('next-plausible')
+
 const nextConfig = {
   reactStrictMode: true,
   api: {
@@ -6,4 +9,6 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withPlausibleProxy({
+  customDomain: 'https://stats.dead.tools',
+})(nextConfig)
